@@ -1,0 +1,20 @@
+class Solution(object):
+    def containsDuplicate(self, nums):
+        n = len(nums)
+        freq = {}
+        
+        # First pass: count the frequency of each character
+        for char in nums:
+            if char in freq:
+                freq[char] += 1
+            else:
+                freq[char] = 1
+        
+        count = 0
+        for i in range(len(nums)):
+            if freq[nums[i]] == 1:
+                count += 1        
+        if count == n:
+            return False
+        else:
+            return True   
