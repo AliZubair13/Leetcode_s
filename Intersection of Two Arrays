@@ -1,0 +1,13 @@
+class Solution(object):
+    def intersection(self, nums1, nums2):
+        freq = {}
+        for char in nums2:
+            freq[char] = 1  # We only care if it's present, so use 1
+        
+        out = []
+        for num in nums1:
+            if num in freq and freq[num] != 0:
+                out.append(num)
+                freq[num] = 0  # Ensure each element is only added once
+        
+        return out
