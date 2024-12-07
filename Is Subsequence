@@ -1,0 +1,15 @@
+class Solution(object):
+    def isSubsequence(self, s, t):
+        # Initialize pointers for both strings
+        i, j = 0, 0
+        
+        # Loop until we reach the end of either string
+        while i < len(s) and j < len(t):
+            # If characters match, move the pointer in `s`
+            if s[i] == t[j]:
+                i += 1
+            # Always move the pointer in `t`
+            j += 1
+        
+        # If we reached the end of `s`, all characters were found in order
+        return i == len(s)
