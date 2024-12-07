@@ -1,0 +1,16 @@
+class Solution(object):
+    def moveZeroes(self, nums):
+        # Pointer to the position to place the next non-zero element
+        l = 0
+        
+        # Move all non-zero elements to the front
+        for i in range(len(nums)):
+            if nums[i] != 0:
+                nums[l] = nums[i]
+                l += 1
+        
+        # Fill the rest of the array with zeros
+        for i in range(l, len(nums)):
+            nums[i] = 0
+        
+        return nums
