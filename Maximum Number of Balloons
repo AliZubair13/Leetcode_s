@@ -1,0 +1,16 @@
+class Solution(object):
+    def maxNumberOfBalloons(self, text):
+        # Initialize the frequency of the characters in "balloon"
+        freq = {'b': 0, 'a': 0, 'l': 0, 'o': 0, 'n': 0}
+        
+        # First pass: count the frequency of each relevant character
+        for char in text:
+            if char in freq:
+                freq[char] += 1
+        
+        # "l" and "o" appear twice in the word "balloon", so divide their counts by 2
+        freq['l'] //= 2
+        freq['o'] //= 2
+        
+        # The number of "balloon"s we can form is determined by the minimum frequency of all the characters
+        return min(freq.values())
