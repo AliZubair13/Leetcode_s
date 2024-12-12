@@ -1,0 +1,34 @@
+
+
+class Solution(object):
+    def getMinimumDifference(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        # Variables to store the previous node's value and minimum difference
+        self.prev = None
+        self.min_diff = float('inf')
+        
+        # Helper function for in-order traversal
+        def inorder(node):
+            if not node:
+                return
+            
+            # Traverse the left subtree
+            inorder(node.left)
+            
+            # Calculate the difference with the previous value if it exists
+            if self.prev is not None:
+                self.min_diff = min(self.min_diff, node.val - self.prev)
+            
+            # Update the previous value to the current node's value
+            self.prev = node.val
+            
+            # Traverse the right subtree
+            inorder(node.right)
+        
+        # Perform in-order traversal of the tree
+        inorder(root)
+        
+        return self.min_diff
