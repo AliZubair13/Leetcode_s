@@ -1,0 +1,31 @@
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+
+class Solution(object):
+    def binaryTreePaths(self, root):
+        # This will store the resulting paths
+        paths = []
+        
+        # Helper function to traverse the tree
+        def dfs(node, path):
+            if node:
+                # Add the current node value to the path
+                path += str(node.val)
+                
+                # If it's a leaf node, add the current path to the result
+                if not node.left and not node.right:
+                    paths.append(path)
+                else:
+                    # If it's not a leaf, continue the path with '->'
+                    path += "->"
+                    # Recursively traverse the left and right subtrees
+                    dfs(node.left, path)
+                    dfs(node.right, path)
+        
+        # Start DFS traversal from the root
+        dfs(root, "")
+        return paths
