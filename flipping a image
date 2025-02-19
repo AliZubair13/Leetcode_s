@@ -1,0 +1,15 @@
+class Solution(object):
+    def transpose(self, matrix):
+        rows = len(matrix)  # Number of rows
+        cols = len(matrix[0]) if rows > 0 else 0  # Number of columns (assuming regular 2D list)
+        
+        # Initialize transposed matrix with swapped dimensions (cols x rows)
+        k = [[0] * rows for _ in range(cols)]
+        for i in range(rows):
+            for j in range(cols):
+                if i == j:
+                    k[i][j] = matrix[i][j]
+                else:
+                    k[j][i] = matrix[i][j]  
+        return k            
+        
