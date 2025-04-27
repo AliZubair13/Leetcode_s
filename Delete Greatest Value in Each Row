@@ -1,0 +1,24 @@
+class Solution(object):
+    def deleteGreatestValue(self, grid):
+        ans = 0
+        key = 0
+        r = len(grid[0])
+        c = len(grid)
+        
+        if r == c == 1:
+            return grid[0][0]  # return the single value, not the row
+
+        else:
+            # Run the loop until all rows are empty
+            while len(grid[0]) > 0:
+                key = 0
+                for i in range(c):
+                    # Make sure the row is not empty before calling max()
+                    if grid[i]:
+                        large = max(grid[i])
+                        print(large)
+                        key = max(key, large)
+                        grid[i].remove(large)
+                ans += key 
+                print(ans)
+            return ans
