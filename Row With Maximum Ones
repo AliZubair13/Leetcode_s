@@ -1,0 +1,23 @@
+class Solution(object):
+    def rowAndMaximumOnes(self, mat):
+        c = len(mat[0])
+        r = len(mat)
+        arr = []
+        res = 0
+        for i in range(r):
+            ans = mat[i].count(1)
+            res = max(res, ans)
+        for i in range(r):
+            ans = mat[i].count(1)
+            if ans == res:
+                arr.append(i)
+                break
+        arr.append(res)
+        return arr    
+
+
+            
+
+
+
+        
